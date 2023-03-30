@@ -21,6 +21,6 @@ int first_elem(double_linked_list *l);
 int last_elem(double_linked_list *l);
 int next_elem(double_linked_list *l);
 int prev_elem(double_linked_list *l);
-
-
-
+double_linked_list insert_elem(double_linked_list *l, int val);
+double_linked_list del_elem(double_linked_list *l);
+void destroy(double_linked_list *l);
