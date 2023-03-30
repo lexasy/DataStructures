@@ -1,5 +1,6 @@
 #pragma once
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct node node;
 struct node {
@@ -14,7 +15,7 @@ typedef struct {
     int size;
 } double_linked_list;
 
-double_linked_list create_list();
+double_linked_list *create_list();
 bool is_empty(double_linked_list *l);
 int size_of_list(double_linked_list *l);
 int first_elem(double_linked_list *l);
