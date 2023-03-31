@@ -69,7 +69,7 @@ int prev_elem(double_linked_list *l, int idx) {
     return tmp->prev->value;
 }
 
-double_linked_list *insert_elem(double_linked_list *l, int idx, int val) { // вставка внутрь списка (не в нулевой и последний элемент)
+void insert_elem(double_linked_list *l, int idx, int val) { // вставка внутрь списка (не в нулевой и последний элемент)
     node *elm = NULL;
     node *new_node = NULL;
     elm = get_node(l, idx);
@@ -91,10 +91,10 @@ double_linked_list *insert_elem(double_linked_list *l, int idx, int val) { // в
         l->last = elm;
     }
     l->size++;
-    return l;
 }
 
-double_linked_list *del_elem(double_linked_list *l, int idx) { // удаление изнутри списка (не из нулевого и последнего элемента)
+int del_elem(double_linked_list *l, int idx) { // удаление изнутри списка (не из нулевого и последнего элемента)
+    int val;
     node *elm = NULL;
     elm = get_node(l, idx);
     if (elm == NULL) {
@@ -106,6 +106,7 @@ double_linked_list *del_elem(double_linked_list *l, int idx) { // удалени
     if (elm->next) {
         elm->prev->next = elm->next;
     }
+    val = elm->value;
     if (!elm->prev) {
         l->head = elm->next;
     }
@@ -114,10 +115,10 @@ double_linked_list *del_elem(double_linked_list *l, int idx) { // удалени
     }
     free(elm);
     l->size--;
-    return l;
+    return val;
 }
 
-double_linked_list *push_front(double_linked_list *l, int val) {
+void push_front(double_linked_list *l, int val) {
     node *new_node = (node *) malloc(sizeof(node));
     if (new_node == NULL) {
         exit(2);
@@ -133,10 +134,9 @@ double_linked_list *push_front(double_linked_list *l, int val) {
         l->last = new_node;
     }
     l->size++;
-    return l;
 }
 
-double_linked_list *push_back(double_linked_list *l, int val) {
+void push_back(double_linked_list *l, int val) {
     node *new_node = (node *) malloc(sizeof(node));
     if (new_node == NULL) {
         exit(2);
@@ -152,10 +152,10 @@ double_linked_list *push_back(double_linked_list *l, int val) {
         l->head = new_node;
     }
     l->size++;
-    return l;
 }
 
-double_linked_list *pop_front(double_linked_list *l) {
+int pop_front(double_linked_list *l) {
+    int val;
     node *prev;
     if (l->head == NULL) {
         exit(3);
@@ -168,12 +168,14 @@ double_linked_list *pop_front(double_linked_list *l) {
     if (prev == l->last) {
         l->last = NULL;
     }
+    val = prev->value;
     free(prev);
     l->size--;
-    return l;
+    return val;
 }
 
-double_linked_list *pop_back(double_linked_list *l) {
+int pop_back(double_linked_list *l) {
+    int val;
     node *next;
     if (l->last == NULL) {
         exit(3);
@@ -186,9 +188,10 @@ double_linked_list *pop_back(double_linked_list *l) {
     if (next == l->head) {
         l->head = NULL;
     }
+    val = next->value;
     free(next);
     l->size--;
-    return l;
+    return val;
 }
 
 void print_list(double_linked_list *l) {
