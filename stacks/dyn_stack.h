@@ -3,12 +3,9 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define INITIAL_SIZE 10
-
 typedef struct {
     int *buf;
     int size;
-    int max_size;
 } int_dyn_stack;
 
 int_dyn_stack *create_stack();
