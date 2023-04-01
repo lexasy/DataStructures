@@ -31,7 +31,7 @@ bool push(int_stack *s, int val) {
 
 int pop(int_stack *s) {
     if (s->size == 0) {
-        return false;
+        exit(2);
     }
     s->size--;
     return *(s->buf + s->size);
