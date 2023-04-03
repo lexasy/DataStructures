@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "double-linked-list.h"
@@ -73,9 +74,6 @@ void insert_elem(double_linked_list *l, int idx, int val) { // вставка в
     node *elm = NULL;
     node *new_node = NULL;
     elm = get_node(l, idx);
-    if (elm == NULL) {
-        exit(1);
-    }
     new_node = (node *) malloc(sizeof(node));
     new_node->value = val;
     new_node->prev = elm;
@@ -97,9 +95,6 @@ int del_elem(double_linked_list *l, int idx) { // удаление изнутр�
     int val;
     node *elm = NULL;
     elm = get_node(l, idx);
-    if (elm == NULL) {
-        exit(1);
-    }
     if (elm->prev) {
         elm->next->prev = elm->prev;
     }
@@ -120,9 +115,6 @@ int del_elem(double_linked_list *l, int idx) { // удаление изнутр�
 
 void push_front(double_linked_list *l, int val) {
     node *new_node = (node *) malloc(sizeof(node));
-    if (new_node == NULL) {
-        exit(2);
-    }
     new_node->value = val;
     new_node->next = l->head;
     new_node->prev = NULL;
@@ -138,9 +130,6 @@ void push_front(double_linked_list *l, int val) {
 
 void push_back(double_linked_list *l, int val) {
     node *new_node = (node *) malloc(sizeof(node));
-    if (new_node == NULL) {
-        exit(2);
-    }
     new_node->value = val;
     new_node->prev = l->last;
     new_node->next = NULL;
@@ -157,9 +146,6 @@ void push_back(double_linked_list *l, int val) {
 int pop_front(double_linked_list *l) {
     int val;
     node *prev;
-    if (l->head == NULL) {
-        exit(3);
-    }
     prev = l->head;
     l->head = l->head->next;
     if (l->head) {
@@ -177,9 +163,6 @@ int pop_front(double_linked_list *l) {
 int pop_back(double_linked_list *l) {
     int val;
     node *next;
-    if (l->last == NULL) {
-        exit(3);
-    }
     next = l->last;
     l->last = l->last->prev;
     if (l->last) {
