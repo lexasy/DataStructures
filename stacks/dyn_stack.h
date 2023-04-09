@@ -3,9 +3,12 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+#define MIN_CAP 32
+
 typedef struct {
     int *buf;
-    int size;
+    int cap;
+    int count;
 } int_dyn_stack;
 
 int_dyn_stack *create_stack();
