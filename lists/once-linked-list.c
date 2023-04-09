@@ -1,4 +1,4 @@
-#include "list.h"
+#include "once-linked-list.h"
 
 bool int_list_init(int_list* list) {
     if(list->size > 0 || list->head != NULL)
