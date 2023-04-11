@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define MIN_CAP 32
+#define MIN_CAP 10
 
 typedef struct {
     int *buf;
