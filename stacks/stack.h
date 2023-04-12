@@ -6,7 +6,7 @@
 #define MAX_SIZE 10
 
 typedef struct {
-    int *buf;
+    int buf[MAX_SIZE];
     int size;
 } int_stack;
 
