@@ -6,9 +6,9 @@
 #define MAX_SIZE 10
 
 typedef struct {
-    int *buf;
+    int buf[MAX_SIZE];
     int size;
-    int *init_head;
+    int init_head;
 } int_queue;
 
 int_queue *create_queue();

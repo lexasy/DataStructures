@@ -4,12 +4,8 @@
 
 int_queue *create_queue() {
     int_queue *tmp = (int_queue *) malloc(sizeof(int_queue));
-    tmp->buf = (int *) malloc(sizeof(int) * MAX_SIZE);
-    tmp->init_head = tmp->buf;
+    tmp->init_head = 0;
     tmp->size = 0;
-    for (int i = 0; i < MAX_SIZE; i++) {
-        *(tmp->buf + i) = 0;
-    }
     return tmp;
 }
 
@@ -25,19 +21,18 @@ bool push(int_queue *q, int val) {
     if (q->size == MAX_SIZE) {
         return false;
     }
-    *(q->buf + q->size) = val;
+    q->buf[q->size] = val;
     q->size++;
     return true;
 }
 
 int pop(int_queue *q) {
-    q->buf += 1;
+    int res = q->buf[q->init_head];
     q->size--;
-    return *(q->buf - 1);
+    q->init_head++;
+    return res;
 }
 
 void destroy(int_queue *q) {
-    free(q->init_head);
-    q->init_head = NULL;
     free(q);
 }
