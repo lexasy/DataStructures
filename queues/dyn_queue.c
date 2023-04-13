@@ -39,7 +39,7 @@ static void decrease_if_possible(int_queue * q) {
                 q->buf[i - new_cap] = q->buf[i];
             }
             printf("[ ##|## ]");
-        } else if ((q->init_head >= new_cap - 1) && (q->init_head + q->size) < q->cap) {
+        } else if ((q->init_head >= new_cap - 1) && (q->init_head + q->size) <= q->cap) {
             for (int i = 0; i <= q->size; i++) {
                 q->buf[i] = q->buf[q->init_head + i];
             }
