@@ -31,14 +31,6 @@ int size_of_list(double_linked_list *l) {
     return l->size;
 }
 
-int first_elem(double_linked_list *l) {
-    return l->head->value;
-}
-
-int last_elem(double_linked_list *l) {
-    return l->last->value;
-}
-
 node *get_node(double_linked_list *l, int idx) {
     node *tmp = NULL;
     int i;
@@ -58,16 +50,6 @@ node *get_node(double_linked_list *l, int idx) {
         }
     }
     return tmp;
-}
-
-int next_elem(double_linked_list *l, int idx) {
-    node *tmp = get_node(l, idx);
-    return tmp->next->value;
-}
-
-int prev_elem(double_linked_list *l, int idx) {
-    node *tmp = get_node(l, idx);
-    return tmp->prev->value;
 }
 
 void insert_elem(double_linked_list *l, int idx, int val) { // вставка внутрь списка (не в нулевой и последний элемент)
@@ -175,13 +157,4 @@ int pop_back(double_linked_list *l) {
     free(next);
     l->size--;
     return val;
-}
-
-void print_list(double_linked_list *l) {
-    node *tmp = l->head;
-    while (tmp) {
-        printf("%d ", tmp->value);
-        tmp = tmp->next;
-    }
-    printf("\n");
 }
