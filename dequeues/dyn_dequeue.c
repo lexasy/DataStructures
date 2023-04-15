@@ -47,7 +47,7 @@ static void decrease_if_possible(int_dequeue *d) {
                 d->buf[i] = d->buf[d->head + i];
             }
             d->head = 0;
-            d->tail = d->head + d->size;
+            d->tail = d->head + d->size - 1;
             printf("[  | ## ]");
         } else {
             printf("[ ## |  ]");
@@ -122,4 +122,3 @@ void destroy(int_dequeue *d) {
     d->size = 0;
     free(d);
 }
-
